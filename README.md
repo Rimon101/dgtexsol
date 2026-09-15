@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Store — Production-Ready E-Commerce Platform
 
-## Getting Started
+A sleek, high-converting product showcase landing page and powerful administrative dashboard built for modern small businesses. Engineered with **Next.js 16 (App Router)**, **React 19**, **Tailwind CSS v4**, **shadcn/ui**, and **Supabase (PostgreSQL, Auth & Storage)**.
 
-First, run the development server:
+---
 
+## ✨ Features
+
+### 🛍️ Customer Storefront
+- **High-Converting Hero Section:** Dynamic product counter badge, trust guarantees, and smooth navigation anchors.
+- **Interactive Catalog Grid:** Real-time client-side search, category filter pills, price and newest sorting, and in-stock toggling.
+- **Quick View Modal:** Fast product inspection dialog showing full descriptions, pricing comparisons, and high-res photography.
+- **Micro-Interactions & Feedback:** Polished hover effects, discount percentage pills, sold-out indicators, and responsive mobile navigation.
+- **Graceful Empty States:** User-friendly fallbacks when searching or when the catalog is being stocked.
+
+### ⚙️ Management Portal (Admin Dashboard)
+- **Protected Dashboard Shell:** Fixed desktop sidebar, mobile drawer navigation, user profile badge, and instant sign-out.
+- **Live Business Metrics:** Real-time summary cards for total products, active catalog items, sold-out inventory, and categories.
+- **Full Product CRUD:** Complete product creation and editing forms with auto-slug generation, compare-at pricing, category assignment, and instant visibility/sold-out toggle switches.
+- **Category Management:** Dedicated category creator and deletion manager with product association counters.
+- **Drag-and-Drop Image Upload:** Direct image uploads to Supabase Storage with size limits, MIME validation, instant preview, and **automated orphaned image cleanup** when products are removed or replaced.
+
+### 🛡️ Enterprise-Grade Security
+- **Triple-Layer Defense:**
+  1. *Edge Middleware:* Intercepts unauthenticated requests to `/admin/*` and redirects to login with return target preservation.
+  2. *Server Action Session Guards:* All database mutations (`create`, `update`, `delete`, `toggle`) explicitly verify authenticated admin sessions server-side.
+  3. *Database Row Level Security (RLS):* Postgres-level policies restrict public visitors to reading only active items, while locking write operations to authenticated administrators.
+- **Environment Isolation:** Zero leakage of `SUPABASE_SERVICE_ROLE_KEY` to client bundles; safeguarded by Next.js `import "server-only"`.
+- **HTTP Security Headers:** `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, and suppressed `X-Powered-By` header.
+
+### 🚀 Search Engine Optimization (SEO)
+- **Schema.org Structured Data:** Dynamic JSON-LD markup for `schema.org/Store` and `schema.org/ItemList` with live prices and stock availability for Google Rich Snippets.
+- **OpenGraph & Social Sharing:** Pre-rendered 1200x630 dynamic social preview cards (`/opengraph-image`) for WhatsApp, iMessage, Twitter/X, and Facebook.
+- **Automated Crawling Policies:** Next.js dynamic `robots.txt` policy and dynamic XML `sitemap.xml` listing all active products.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | [Next.js 16.3.5](https://nextjs.org/) (App Router, Turbopack, Server Actions) |
+| **UI Library** | [React 19](https://react.dev/) + [Tailwind CSS v4](https://tailwindcss.com/) |
+| **Component System** | [shadcn/ui](https://ui.shadcn.com/) (base-nova with `@base-ui/react`) |
+| **Database & Auth** | [Supabase](https://supabase.com/) (PostgreSQL with RLS + GoTrue Auth) |
+| **Image Storage** | [Supabase Storage](https://supabase.com/storage) (Public `product-images` bucket) |
+| **Validation** | [Zod v4](https://zod.dev/) |
+| **Notifications** | [Sonner](https://sonner.emilkowal.ski/) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+
+---
+
+## 🏁 Getting Started
+
+### 1. Clone & Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd "web 3"
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
+Copy `.env.local.example` to `.env.local`:
+```bash
+cp .env.local.example .env.local
+```
+Fill in your Supabase credentials:
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Setup Database Schema
+Execute the SQL files in `supabase/migrations/` inside your Supabase SQL Editor:
+1. `supabase/migrations/001_initial_schema.sql` (Tables, Indexes, RLS)
+2. `supabase/migrations/002_storage_setup.sql` (Storage Bucket & Policies)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Create an Admin User
+In your Supabase Dashboard, go to **Authentication** > **Users** > **Add User** and create your admin account.
 
-## Learn More
+### 5. Start Development Server
+```bash
+npm run dev
+```
+Open **[http://localhost:3000](http://localhost:3000)** in your browser. Access the management dashboard at **[http://localhost:3000/admin](http://localhost:3000/admin)**.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🏗️ Production Build & Verification
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To compile an optimized production build:
+```bash
+# Type check
+npx tsc --noEmit
 
-## Deploy on Vercel
+# Lint
+npm run lint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Compile production build
+npm run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Start production server
+npm run start
+```
+
+---
+
+## 🚢 Deployment to Vercel
+
+For complete production deployment instructions, domain setup, and Supabase URL configuration, see the [Production Deployment Guide](DEPLOYMENT.md).
+
+---
+
+## 📄 License
+This project is licensed under the MIT License.
