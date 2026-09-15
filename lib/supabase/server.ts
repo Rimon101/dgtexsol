@@ -41,3 +41,26 @@ export async function createClient() {
     },
   });
 }
+
+/**
+ * Supabase public server client — used for static generation, sitemaps, or public read-only operations.
+ * Does not read or write cookies, avoiding dynamic server errors during build time.
+ */
+export function createPublicServerClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error(
+      "Missing Supabase environment variables. " +
+        "Ensure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set in .env.local"
+    );
+  }
+
+  return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll: () => [],
+      setAll: () => {},
+    },
+  });
+}

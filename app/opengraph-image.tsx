@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/seo";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export const alt = "Modern Store — Curated Quality Products";
 export const size = {
