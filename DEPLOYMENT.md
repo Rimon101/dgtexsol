@@ -122,3 +122,4 @@ Verify all major features in production:
 ### Image Storage Management
 - Uploaded product photos are stored in the `product-images` bucket.
 - The application automatically purges old or deleted images when a product is deleted or its image is replaced, keeping your storage clean and economical.
+
