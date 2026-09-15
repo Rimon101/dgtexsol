@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { ArrowDown, Sparkles, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
+import { ArrowDown, Smartphone, Wrench, ShieldCheck, Repeat } from "lucide-react";
 
 interface HeroProps {
   productCount: number;
@@ -13,17 +13,17 @@ export function Hero({ productCount }: HeroProps) {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
         {/* Subtle pill badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium">
-          <Sparkles className="h-3.5 w-3.5" />
-          <span>Curated Collection • {productCount} {productCount === 1 ? "Product" : "Products"} Available</span>
+          <Smartphone className="h-3.5 w-3.5" />
+          <span>Phones • Repairs • Electronics — {productCount} {productCount === 1 ? "Product" : "Products"} Available</span>
         </div>
 
         {/* Main Headline */}
         <div className="space-y-4 max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]">
-            Quality Products Crafted for Modern Living
+            Your One-Stop Shop for Phones &amp; Electrical Solutions
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Discover our carefully selected collection of premium products. Browse categories, explore details, and find the perfect item for your everyday needs.
+            Buy, sell, or exchange smartphones. Get expert phone &amp; electrical repairs. Browse our inventory of quality devices, accessories, and electronics — all at the best prices.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export function Hero({ productCount }: HeroProps) {
               className: "gap-2 shadow-md hover:shadow-lg transition-all",
             })}
           >
-            <span>Explore Catalog</span>
+            <span>Browse Products</span>
             <ArrowDown className="h-4 w-4" />
           </Link>
 
@@ -47,7 +47,7 @@ export function Hero({ productCount }: HeroProps) {
               size: "lg",
             })}
           >
-            <span>About Our Store</span>
+            <span>About Us</span>
           </Link>
         </div>
 
@@ -55,21 +55,21 @@ export function Hero({ productCount }: HeroProps) {
         <div className="pt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-left">
           <div className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border/70 shadow-2xs">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-              <CheckCircle2 className="h-5 w-5" />
+              <Wrench className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-foreground">Verified Quality</p>
-              <p className="text-[11px] text-muted-foreground">Every item curated</p>
+              <p className="text-xs font-semibold text-foreground">Expert Repairs</p>
+              <p className="text-[11px] text-muted-foreground">Phones &amp; electrical</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border/70 shadow-2xs">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-              <Zap className="h-5 w-5" />
+              <Repeat className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-foreground">Fast Dispatch</p>
-              <p className="text-[11px] text-muted-foreground">Prompt order handling</p>
+              <p className="text-xs font-semibold text-foreground">Buy, Sell &amp; Exchange</p>
+              <p className="text-[11px] text-muted-foreground">Best trade-in deals</p>
             </div>
           </div>
 
@@ -78,8 +78,8 @@ export function Hero({ productCount }: HeroProps) {
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-foreground">Direct Support</p>
-              <p className="text-[11px] text-muted-foreground">Dedicated business care</p>
+              <p className="text-xs font-semibold text-foreground">Trusted Service</p>
+              <p className="text-[11px] text-muted-foreground">Quality guaranteed</p>
             </div>
           </div>
         </div>
@@ -87,4 +87,3 @@ export function Hero({ productCount }: HeroProps) {
     </section>
   );
 }
-

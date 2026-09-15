@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Store, Shield, Menu, X } from "lucide-react";
+import { Smartphone, Shield, Menu, X } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 export function StoreHeader() {
@@ -14,9 +14,9 @@ export function StoreHeader() {
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2.5 font-bold text-lg tracking-tight">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-xs">
-            <Store className="h-5 w-5" />
+            <Smartphone className="h-5 w-5" />
           </div>
-          <span className="text-foreground">Store</span>
+          <span className="text-foreground">Digital Exchange</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -24,11 +24,11 @@ export function StoreHeader() {
           <Link href="#catalog" className="hover:text-foreground transition-colors">
             All Products
           </Link>
-          <Link href="#featured" className="hover:text-foreground transition-colors">
-            Featured
+          <Link href="#catalog" className="hover:text-foreground transition-colors">
+            Repairs &amp; Services
           </Link>
           <Link href="#about" className="hover:text-foreground transition-colors">
-            About
+            About Us
           </Link>
         </nav>
 
@@ -84,18 +84,18 @@ export function StoreHeader() {
             All Products
           </Link>
           <Link
-            href="#featured"
+            href="#catalog"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-muted"
           >
-            Featured Items
+            Repairs &amp; Services
           </Link>
           <Link
             href="#about"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-muted"
           >
-            About Business
+            About Us
           </Link>
           <div className="pt-2 border-t border-border">
             <Link

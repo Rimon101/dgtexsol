@@ -1,13 +1,13 @@
-# Modern Store — Production-Ready E-Commerce Platform
+# Digital Exchange & Solution — E-Commerce Platform
 
-A sleek, high-converting product showcase landing page and powerful administrative dashboard built for modern small businesses. Engineered with **Next.js 16 (App Router)**, **React 19**, **Tailwind CSS v4**, **shadcn/ui**, and **Supabase (PostgreSQL, Auth & Storage)**.
+A sleek, high-converting product showcase landing page and powerful administrative dashboard built for **Digital Exchange & Solution** — your trusted destination for phone sales, exchanges, repairs, and electrical solutions. Engineered with **Next.js 16 (App Router)**, **React 19**, **Tailwind CSS v4**, **shadcn/ui**, and **Supabase (PostgreSQL, Auth & Storage)**.
 
 ---
 
 ## ✨ Features
 
 ### 🛍️ Customer Storefront
-- **High-Converting Hero Section:** Dynamic product counter badge, trust guarantees, and smooth navigation anchors.
+- **Hero Section:** Dynamic product counter, service highlights (repairs, exchange, electrical), and smooth navigation.
 - **Interactive Catalog Grid:** Real-time client-side search, category filter pills, price and newest sorting, and in-stock toggling.
 - **Quick View Modal:** Fast product inspection dialog showing full descriptions, pricing comparisons, and high-res photography.
 - **Micro-Interactions & Feedback:** Polished hover effects, discount percentage pills, sold-out indicators, and responsive mobile navigation.
@@ -54,8 +54,8 @@ A sleek, high-converting product showcase landing page and powerful administrati
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone <repository-url>
-cd "web 3"
+git clone https://github.com/Rimon101/dgtexsol.git
+cd dgtexsol
 npm install
 ```
 

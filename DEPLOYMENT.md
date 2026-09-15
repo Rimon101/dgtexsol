@@ -1,6 +1,6 @@
 # Production Deployment & Operations Guide
 
-This guide provides step-by-step instructions for deploying the **Modern Store** application to **Vercel** and linking it with your production **Supabase** instance.
+This guide provides step-by-step instructions for deploying the **Digital Exchange & Solution** application to **Vercel** and linking it with your production **Supabase** instance.
 
 ---
 

@@ -3,20 +3,23 @@
  */
 
 export const siteConfig = {
-  name: "Modern Store",
+  name: "Digital Exchange & Solution",
   description:
-    "Discover our curated collection of premium products. Browse categories, explore verified details, and shop with confidence.",
+    "Your trusted destination for phone sales, exchanges, repairs, and electrical solutions. Browse our inventory, get expert repairs, and find the best deals on smartphones and electronics.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "/og-image.png",
   currency: "USD",
   locale: "en_US",
   keywords: [
-    "e-commerce",
-    "online store",
-    "shopping",
-    "curated products",
-    "lifestyle goods",
-    "quality store",
+    "phone repair",
+    "phone exchange",
+    "buy sell phones",
+    "electrical solutions",
+    "smartphone store",
+    "electronics repair",
+    "used phones",
+    "phone accessories",
+    "digital exchange",
   ],
 };
 

@@ -18,7 +18,7 @@ export function JsonLd({ products }: JsonLdProps) {
         name: siteConfig.name,
         url: siteUrl,
         description: siteConfig.description,
-        priceRange: "$$",
+        priceRange: "$",
         currenciesAccepted: siteConfig.currency,
       },
       {

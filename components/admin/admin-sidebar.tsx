@@ -52,9 +52,9 @@ export function AdminSidebar({
             <Store className="h-5 w-5" />
           </div>
           <div className="flex flex-col">
-            <span className="leading-tight">Business Admin</span>
+            <span className="leading-tight">DGTex Admin</span>
             <span className="text-[11px] font-normal text-muted-foreground">
-              Store Management
+              Digital Exchange &amp; Solution
             </span>
           </div>
         </Link>
@@ -101,7 +101,7 @@ export function AdminSidebar({
         >
           <span className="flex items-center gap-3">
             <ExternalLink className="h-4 w-4 shrink-0" />
-            <span>View Public Store</span>
+            <span>View Public Site</span>
           </span>
           <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded text-muted-foreground">
             ↗
@@ -119,7 +119,7 @@ export function AdminSidebar({
             <span className="text-xs font-medium text-foreground truncate">
               {userEmail ?? "Admin Owner"}
             </span>
-            <span className="text-[10px] text-muted-foreground">Store Owner</span>
+            <span className="text-[10px] text-muted-foreground">Business Owner</span>
           </div>
         </div>
         <LogoutButton className="w-full justify-center" size="sm" />

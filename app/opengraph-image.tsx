@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/seo";
 
 export const runtime = "nodejs";
 
-export const alt = "Modern Store — Curated Quality Products";
+export const alt = "Digital Exchange & Solution — Phones, Repairs & Electrical";
 export const size = {
   width: 1200,
   height: 630,
@@ -59,7 +59,7 @@ export default async function Image() {
             letterSpacing: "0.1em",
           }}
         >
-          Curated Product Collection
+          Phones • Repairs • Electrical Solutions
         </div>
 
         {/* Title */}
