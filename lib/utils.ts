@@ -31,8 +31,8 @@ export function slugify(text: string): string {
  */
 export function formatPrice(
   amount: number,
-  currency: string = "USD",
-  locale: string = "en-US"
+  currency: string = "BDT",
+  locale: string = "en-BD"
 ): string {
   return new Intl.NumberFormat(locale, {
     style: "currency",

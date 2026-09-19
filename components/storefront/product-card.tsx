@@ -3,7 +3,7 @@
 import * as React from "react";
 import { formatPrice } from "@/lib/utils";
 import type { ProductWithCategoryName } from "@/actions/products";
-import { Package, Eye } from "lucide-react";
+import { Package, Eye, ShoppingBag } from "lucide-react";
 
 interface ProductCardProps {
   product: ProductWithCategoryName;
@@ -20,11 +20,13 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
 
   return (
     <div
-      onClick={() => onSelect(product)}
-      className="group relative flex flex-col rounded-2xl border border-border/80 bg-card overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-border cursor-pointer"
+      className="group relative flex flex-col rounded-2xl border border-border/80 bg-card overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-border"
     >
       {/* Media container */}
-      <div className="relative aspect-square w-full bg-muted/50 overflow-hidden flex items-center justify-center">
+      <div
+        onClick={() => onSelect(product)}
+        className="relative aspect-square w-full bg-muted/50 overflow-hidden flex items-center justify-center cursor-pointer"
+      >
         {product.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -62,7 +64,7 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
 
       {/* Content */}
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-        <div className="space-y-1">
+        <div className="space-y-1 cursor-pointer" onClick={() => onSelect(product)}>
           <p className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
             {product.category?.name ?? "Collection"}
           </p>
@@ -99,8 +101,19 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
             {product.is_sold_out ? "Sold Out" : "Available"}
           </span>
         </div>
+
+        {/* Buy Now Button */}
+        {!product.is_sold_out && (
+          <button
+            type="button"
+            onClick={() => onSelect(product)}
+            className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-colors shadow-xs cursor-pointer"
+          >
+            <ShoppingBag className="h-3.5 w-3.5" />
+            <span>Buy Now</span>
+          </button>
+        )}
       </div>
     </div>
   );
 }
-

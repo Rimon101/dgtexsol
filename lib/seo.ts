@@ -8,8 +8,8 @@ export const siteConfig = {
     "Your trusted destination for phone sales, exchanges, repairs, and electrical solutions. Browse our inventory, get expert repairs, and find the best deals on smartphones and electronics.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "/og-image.png",
-  currency: "USD",
-  locale: "en_US",
+  currency: "BDT",
+  locale: "en-BD",
   keywords: [
     "phone repair",
     "phone exchange",

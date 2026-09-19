@@ -3,7 +3,9 @@
 import * as React from "react";
 import { formatPrice } from "@/lib/utils";
 import type { ProductWithCategoryName } from "@/actions/products";
-import { X, Package, CheckCircle2, AlertCircle } from "lucide-react";
+import { createOrderAction } from "@/actions/orders";
+import { X, Package, CheckCircle2, AlertCircle, ShoppingBag, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface ProductModalProps {
   product: ProductWithCategoryName | null;
@@ -11,6 +13,11 @@ interface ProductModalProps {
 }
 
 export function ProductModal({ product, onClose }: ProductModalProps) {
+  const [showBuyForm, setShowBuyForm] = React.useState(false);
+  const [customerName, setCustomerName] = React.useState("");
+  const [customerPhone, setCustomerPhone] = React.useState("");
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -25,6 +32,16 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
     };
   }, [product, onClose]);
 
+  // Reset form when modal opens/closes
+  React.useEffect(() => {
+    if (!product) {
+      setShowBuyForm(false);
+      setCustomerName("");
+      setCustomerPhone("");
+      setIsSubmitting(false);
+    }
+  }, [product]);
+
   if (!product) return null;
 
   const discount =
@@ -33,6 +50,33 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
           ((product.compare_at_price - product.price) / product.compare_at_price) * 100
         )
       : null;
+
+  async function handleBuyNow(e: React.FormEvent) {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await createOrderAction(
+        product!.id,
+        customerName,
+        customerPhone
+      );
+
+      if (result.error) {
+        toast.error(result.error);
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (result.checkoutUrl) {
+        toast.success("Redirecting to payment...");
+        window.location.href = result.checkoutUrl;
+      }
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+      setIsSubmitting(false);
+    }
+  }
 
   return (
     <div
@@ -121,7 +165,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                 ) : (
                   <div className="flex items-center gap-1.5 text-emerald-600 font-medium">
                     <CheckCircle2 className="h-4 w-4" />
-                    <span>In Stock & Available</span>
+                    <span>In Stock &amp; Available</span>
                   </div>
                 )}
               </div>
@@ -135,6 +179,84 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                   <p className="text-sm text-foreground/80 whitespace-pre-line leading-relaxed">
                     {product.description}
                   </p>
+                </div>
+              )}
+
+              {/* Buy Now Section */}
+              {!product.is_sold_out && (
+                <div className="pt-3 border-t border-border">
+                  {!showBuyForm ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowBuyForm(true)}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors shadow-sm cursor-pointer"
+                    >
+                      <ShoppingBag className="h-4 w-4" />
+                      <span>Buy Now — {formatPrice(product.price)}</span>
+                    </button>
+                  ) : (
+                    <form onSubmit={handleBuyNow} className="space-y-3">
+                      <div className="space-y-1.5">
+                        <label htmlFor="modal-customer-name" className="text-xs font-medium text-foreground">
+                          Your Name
+                        </label>
+                        <input
+                          id="modal-customer-name"
+                          type="text"
+                          required
+                          minLength={2}
+                          value={customerName}
+                          onChange={(e) => setCustomerName(e.target.value)}
+                          placeholder="Enter your name"
+                          disabled={isSubmitting}
+                          className="w-full h-9 rounded-lg border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label htmlFor="modal-customer-phone" className="text-xs font-medium text-foreground">
+                          Phone Number
+                        </label>
+                        <input
+                          id="modal-customer-phone"
+                          type="tel"
+                          required
+                          minLength={6}
+                          value={customerPhone}
+                          onChange={(e) => setCustomerPhone(e.target.value)}
+                          placeholder="01XXXXXXXXX"
+                          disabled={isSubmitting}
+                          className="w-full h-9 rounded-lg border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                        />
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setShowBuyForm(false)}
+                          disabled={isSubmitting}
+                          className="flex-1 px-3 py-2 rounded-lg border border-border text-sm font-medium text-foreground hover:bg-muted transition-colors disabled:opacity-50 cursor-pointer"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 cursor-pointer"
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                              <span>Processing...</span>
+                            </>
+                          ) : (
+                            <>
+                              <ShoppingBag className="h-4 w-4" />
+                              <span>Pay {formatPrice(product.price)}</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </form>
+                  )}
                 </div>
               )}
             </div>

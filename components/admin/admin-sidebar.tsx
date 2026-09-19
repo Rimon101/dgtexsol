@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   Package,
   FolderTree,
+  Receipt,
   ExternalLink,
   Store,
   User,
@@ -25,6 +26,7 @@ const iconMap: Record<string, React.ElementType> = {
   LayoutDashboard,
   Package,
   FolderTree,
+  Receipt,
 };
 
 export function AdminSidebar({

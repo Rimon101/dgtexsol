@@ -19,6 +19,8 @@ import {
   ExternalLink,
   ArrowRight,
   ShoppingBag,
+  Receipt,
+  DollarSign,
 } from "lucide-react";
 
 interface DashboardOverviewProps {
@@ -62,6 +64,23 @@ export function DashboardOverview({
       icon: FolderTree,
       iconColor: "text-purple-600 bg-purple-100 dark:bg-purple-950 dark:text-purple-400",
       href: "/admin/categories",
+    },
+    {
+      title: "Total Orders",
+      value: stats.totalOrders,
+      description: `${stats.completedOrders} completed`,
+      icon: Receipt,
+      iconColor: "text-indigo-600 bg-indigo-100 dark:bg-indigo-950 dark:text-indigo-400",
+      href: "/admin/orders",
+    },
+    {
+      title: "Revenue",
+      value: stats.totalRevenue,
+      description: "From completed orders",
+      icon: DollarSign,
+      iconColor: "text-teal-600 bg-teal-100 dark:bg-teal-950 dark:text-teal-400",
+      href: "/admin/orders",
+      isPrice: true,
     },
   ];
 
@@ -118,7 +137,9 @@ export function DashboardOverview({
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold tracking-tight text-foreground">
-                  {card.value}
+                  {(card as { isPrice?: boolean }).isPrice
+                    ? formatPrice(card.value)
+                    : card.value}
                 </div>
                 <p className="text-xs text-muted-foreground mt-1.5">
                   {card.description}

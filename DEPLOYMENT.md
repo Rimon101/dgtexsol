@@ -25,6 +25,7 @@ Before deploying, ensure you have:
 Ensure the following migration scripts in the `supabase/migrations/` directory have been executed in your Supabase SQL Editor:
 1. `001_initial_schema.sql` — Creates `categories` and `products` tables, indexes, triggers, and Row Level Security (RLS) policies.
 2. `002_storage_setup.sql` — Creates the public `product-images` storage bucket and security policies.
+3. `003_orders_table.sql` — Creates `orders` table, indexes, and RLS policies for Waitmark Pay integration.
 
 ### B. Auth URL Configuration
 1. In the Supabase Dashboard, navigate to **Authentication** > **URL Configuration**.
@@ -67,8 +68,10 @@ Expand the **"Environment Variables"** accordion in Vercel and add:
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJhbGciOi...` | Production, Preview, Development |
 | `SUPABASE_SERVICE_ROLE_KEY` | `eyJhbGciOi...` | Production, Preview, Development |
 | `NEXT_PUBLIC_SITE_URL` | `https://yourdomain.com` | Production |
+| `WAITMARK_PUBLIC_KEY` | `pk_live_xxxx` | Production, Preview, Development |
+| `WAITMARK_SECRET_KEY` | `sk_live_xxxx` | Production, Preview, Development |
 
-> ⚠️ **CRITICAL SECURITY NOTE:** Never prefix `SUPABASE_SERVICE_ROLE_KEY` with `NEXT_PUBLIC_`. It is a server-only secret that bypasses Row Level Security.
+> ⚠️ **CRITICAL SECURITY NOTE:** Never prefix `SUPABASE_SERVICE_ROLE_KEY` or `WAITMARK_SECRET_KEY` with `NEXT_PUBLIC_`. These are server-only secrets that must never be exposed to the browser.
 
 ### Step 5: Deploy
 Click **"Deploy"**. Vercel will compile the Next.js production build, pre-render static assets, bundle Server Actions, and deploy to their global Edge CDN in approximately 1 to 2 minutes.

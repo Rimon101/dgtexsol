@@ -88,6 +88,61 @@ export interface Database {
           }
         ];
       };
+      orders: {
+        Row: {
+          id: string;
+          order_id: string;
+          product_id: string | null;
+          product_name: string;
+          amount: number;
+          currency: string;
+          customer_name: string | null;
+          customer_phone: string | null;
+          status: string;
+          trx_id: string | null;
+          paid_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          order_id: string;
+          product_id?: string | null;
+          product_name: string;
+          amount: number;
+          currency?: string;
+          customer_name?: string | null;
+          customer_phone?: string | null;
+          status?: string;
+          trx_id?: string | null;
+          paid_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          order_id?: string;
+          product_id?: string | null;
+          product_name?: string;
+          amount?: number;
+          currency?: string;
+          customer_name?: string | null;
+          customer_phone?: string | null;
+          status?: string;
+          trx_id?: string | null;
+          paid_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "orders_product_id_fkey";
+            columns: ["product_id"];
+            referencedRelation: "products";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
     };
     Views: {
       [_ in never]: never;

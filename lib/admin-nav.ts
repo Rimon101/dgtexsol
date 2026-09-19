@@ -20,5 +20,10 @@ export const ADMIN_NAV_ITEMS: NavItem[] = [
     href: "/admin/categories",
     icon: "FolderTree",
   },
+  {
+    title: "Orders",
+    href: "/admin/orders",
+    icon: "Receipt",
+  },
 ];
 

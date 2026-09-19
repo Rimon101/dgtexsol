@@ -70,12 +70,15 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+WAITMARK_PUBLIC_KEY=pk_live_xxxx
+WAITMARK_SECRET_KEY=sk_live_xxxx
 ```
 
 ### 3. Setup Database Schema
 Execute the SQL files in `supabase/migrations/` inside your Supabase SQL Editor:
 1. `supabase/migrations/001_initial_schema.sql` (Tables, Indexes, RLS)
 2. `supabase/migrations/002_storage_setup.sql` (Storage Bucket & Policies)
+3. `supabase/migrations/003_orders_table.sql` (Orders Table, Indexes, RLS)
 
 ### 4. Create an Admin User
 In your Supabase Dashboard, go to **Authentication** > **Users** > **Add User** and create your admin account.

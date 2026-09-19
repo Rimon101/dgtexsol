@@ -8,6 +8,9 @@ export interface DashboardStats {
   inactiveProducts: number;
   soldOutProducts: number;
   totalCategories: number;
+  totalOrders: number;
+  completedOrders: number;
+  totalRevenue: number;
 }
 
 export interface RecentProduct {
@@ -37,6 +40,7 @@ export async function getDashboardData(): Promise<{
     soldOutProductsRes,
     categoriesRes,
     recentProductsRes,
+    ordersRes,
   ] = await Promise.all([
     supabase.from("products").select("*", { count: "exact", head: true }),
     supabase.from("products").select("*", { count: "exact", head: true }).eq("is_active", true),
@@ -47,6 +51,7 @@ export async function getDashboardData(): Promise<{
       .select("id, name, slug, price, is_active, is_sold_out, image_url, created_at")
       .order("created_at", { ascending: false })
       .limit(5),
+    supabase.from("orders").select("status, amount"),
   ]);
 
   const total = totalProductsRes.count ?? 0;
@@ -55,6 +60,14 @@ export async function getDashboardData(): Promise<{
   const inactive = Math.max(0, total - active);
   const categoriesCount = categoriesRes.count ?? 0;
 
+  // Order stats
+  const orders = ordersRes.data ?? [];
+  const totalOrders = orders.length;
+  const completedOrders = orders.filter((o) => o.status === "completed").length;
+  const totalRevenue = orders
+    .filter((o) => o.status === "completed")
+    .reduce((sum, o) => sum + Number(o.amount), 0);
+
   return {
     stats: {
       totalProducts: total,
@@ -62,6 +75,9 @@ export async function getDashboardData(): Promise<{
       inactiveProducts: inactive,
       soldOutProducts: soldOut,
       totalCategories: categoriesCount,
+      totalOrders,
+      completedOrders,
+      totalRevenue,
     },
     recentProducts: (recentProductsRes.data as RecentProduct[]) ?? [],
   };
