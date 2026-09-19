@@ -20,25 +20,25 @@ export function Hero({ productCount }: HeroProps) {
         {/* CTA Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
-            href="#catalog"
+            href="#custom-clocks"
             className={buttonVariants({
               size: "lg",
               className: "gap-2 shadow-md hover:shadow-lg transition-all",
             })}
           >
-            <span>Our Products</span>
+            <span>Custom Clocks</span>
             <ArrowDown className="h-4 w-4" />
           </Link>
 
           <Link
-            href="#custom-clocks"
+            href="#catalog"
             className={buttonVariants({
               variant: "outline",
               size: "lg",
               className: "gap-2",
             })}
           >
-            <span>Custom Clocks</span>
+            <span>Our Products</span>
             <ArrowDown className="h-4 w-4" />
           </Link>
         </div>

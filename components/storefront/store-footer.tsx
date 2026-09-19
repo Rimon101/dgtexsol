@@ -38,12 +38,12 @@ export function StoreFooter() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/880199023414"
+                  href="https://wa.me/8801990253414"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-foreground transition-colors"
                 >
-                  WhatsApp: +880199023414
+                  WhatsApp: +8801990253414
                 </a>
               </li>
             </ul>

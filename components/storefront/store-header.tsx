@@ -21,11 +21,11 @@ export function StoreHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <Link href="#catalog" className="hover:text-foreground transition-colors">
-            Our Products
-          </Link>
           <Link href="#custom-clocks" className="hover:text-foreground transition-colors">
             Custom Clocks
+          </Link>
+          <Link href="#catalog" className="hover:text-foreground transition-colors">
+            Our Products
           </Link>
           <Link href="#about" className="hover:text-foreground transition-colors">
             About Us
@@ -77,18 +77,18 @@ export function StoreHeader() {
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-border bg-background px-4 py-4 space-y-3 animate-in slide-in-from-top-2 duration-150">
           <Link
-            href="#catalog"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-muted"
-          >
-            Our Products
-          </Link>
-          <Link
             href="#custom-clocks"
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-muted"
           >
             Custom Clocks
+          </Link>
+          <Link
+            href="#catalog"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-muted"
+          >
+            Our Products
           </Link>
           <Link
             href="#about"

@@ -31,8 +31,8 @@ export default async function HomePage() {
       <StoreHeader />
       <main className="flex-1">
         <Hero productCount={products.length} />
-        <ProductGrid initialProducts={products} categories={categories} />
         <CustomClocksSection clocks={customClocks} />
+        <ProductGrid initialProducts={products} categories={categories} />
       </main>
       <StoreFooter />
     </div>

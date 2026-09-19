@@ -62,3 +62,4 @@ CREATE POLICY "Authenticated users can delete custom clocks"
   ON custom_clocks FOR DELETE
   TO authenticated
   USING (true);
+

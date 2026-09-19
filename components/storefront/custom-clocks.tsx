@@ -8,8 +8,8 @@ interface CustomClocksSectionProps {
   clocks: CustomClockItem[];
 }
 
-const WHATSAPP_NUMBER = "+880199023414";
-const WHATSAPP_URL = "https://wa.me/880199023414";
+const WHATSAPP_NUMBER = "+8801990253414";
+const WHATSAPP_URL = "https://wa.me/8801990253414";
 
 export function CustomClocksSection({ clocks }: CustomClocksSectionProps) {
   const [selectedClock, setSelectedClock] = React.useState<CustomClockItem | null>(null);
@@ -168,7 +168,7 @@ export function CustomClocksSection({ clocks }: CustomClocksSectionProps) {
                   className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-colors shadow-xs"
                 >
                   <MessageCircle className="h-4 w-4" />
-                  <span>WhatsApp-এ মেসেজ পাঠান (+880199023414)</span>
+                  <span>WhatsApp-এ মেসেজ পাঠান (+8801990253414)</span>
                   <ExternalLink className="h-3.5 w-3.5 opacity-80" />
                 </a>
               </div>
@@ -179,3 +179,4 @@ export function CustomClocksSection({ clocks }: CustomClocksSectionProps) {
     </section>
   );
 }
+
