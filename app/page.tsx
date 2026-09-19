@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/actions/products";
 import { getCategories } from "@/actions/categories";
+import { getCustomClocks } from "@/actions/custom-clocks";
 import { StoreHeader } from "@/components/storefront/store-header";
 import { Hero } from "@/components/storefront/hero";
 import { ProductGrid } from "@/components/storefront/product-grid";
+import { CustomClocksSection } from "@/components/storefront/custom-clocks";
 import { StoreFooter } from "@/components/storefront/store-footer";
 import { JsonLd } from "@/components/storefront/json-ld";
 import { siteConfig } from "@/lib/seo";
@@ -17,9 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [products, categories] = await Promise.all([
+  const [products, categories, customClocks] = await Promise.all([
     getProducts({ status: "active" }),
     getCategories(),
+    getCustomClocks(),
   ]);
 
   return (
@@ -29,6 +32,7 @@ export default async function HomePage() {
       <main className="flex-1">
         <Hero productCount={products.length} />
         <ProductGrid initialProducts={products} categories={categories} />
+        <CustomClocksSection clocks={customClocks} />
       </main>
       <StoreFooter />
     </div>

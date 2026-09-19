@@ -14,17 +14,7 @@ export function Hero({ productCount }: HeroProps) {
         {/* Subtle pill badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium">
           <Smartphone className="h-3.5 w-3.5" />
-          <span>Phones • Repairs • Electronics — {productCount} {productCount === 1 ? "Product" : "Products"} Available</span>
-        </div>
-
-        {/* Main Headline */}
-        <div className="space-y-4 max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]">
-            Your One-Stop Shop for Phones &amp; Electrical Solutions
-          </h1>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Buy, sell, or exchange smartphones. Get expert phone &amp; electrical repairs. Browse our inventory of quality devices, accessories, and electronics — all at the best prices.
-          </p>
+          <span>Digital Exchange &amp; Solution • {productCount} {productCount === 1 ? "Product" : "Products"} Available</span>
         </div>
 
         {/* CTA Buttons */}
@@ -36,18 +26,20 @@ export function Hero({ productCount }: HeroProps) {
               className: "gap-2 shadow-md hover:shadow-lg transition-all",
             })}
           >
-            <span>Browse Products</span>
+            <span>Our Products</span>
             <ArrowDown className="h-4 w-4" />
           </Link>
 
           <Link
-            href="#about"
+            href="#custom-clocks"
             className={buttonVariants({
               variant: "outline",
               size: "lg",
+              className: "gap-2",
             })}
           >
-            <span>About Us</span>
+            <span>Custom Clocks</span>
+            <ArrowDown className="h-4 w-4" />
           </Link>
         </div>
 

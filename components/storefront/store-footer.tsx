@@ -24,22 +24,27 @@ export function StoreFooter() {
 
           {/* Quick Links */}
           <div className="space-y-3 text-sm">
-            <h4 className="font-semibold text-foreground tracking-wide">Our Services</h4>
+            <h4 className="font-semibold text-foreground tracking-wide">Quick Links</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <Link href="#catalog" className="hover:text-foreground transition-colors">
-                  Phone Sales &amp; Exchange
+                  Our Products
                 </Link>
               </li>
               <li>
-                <Link href="#catalog" className="hover:text-foreground transition-colors">
-                  Phone &amp; Electrical Repair
+                <Link href="#custom-clocks" className="hover:text-foreground transition-colors">
+                  Custom Clocks
                 </Link>
               </li>
               <li>
-                <Link href="#catalog" className="hover:text-foreground transition-colors">
-                  Accessories &amp; Parts
-                </Link>
+                <a
+                  href="https://wa.me/880199023414"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  WhatsApp: +880199023414
+                </a>
               </li>
             </ul>
           </div>

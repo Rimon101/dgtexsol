@@ -25,5 +25,10 @@ export const ADMIN_NAV_ITEMS: NavItem[] = [
     href: "/admin/orders",
     icon: "Receipt",
   },
+  {
+    title: "Custom Clocks",
+    href: "/admin/custom-clocks",
+    icon: "Clock",
+  },
 ];
 

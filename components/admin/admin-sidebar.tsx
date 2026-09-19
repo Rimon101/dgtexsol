@@ -11,6 +11,7 @@ import {
   Package,
   FolderTree,
   Receipt,
+  Clock,
   ExternalLink,
   Store,
   User,
@@ -27,6 +28,7 @@ const iconMap: Record<string, React.ElementType> = {
   Package,
   FolderTree,
   Receipt,
+  Clock,
 };
 
 export function AdminSidebar({
