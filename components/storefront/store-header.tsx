@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Smartphone, Shield, Menu, X } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Smartphone, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function StoreHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -32,35 +32,8 @@ export function StoreHeader() {
           </Link>
         </nav>
 
-        {/* Right side Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/admin"
-            className={buttonVariants({
-              variant: "outline",
-              size: "sm",
-              className: "text-xs gap-1.5",
-            })}
-          >
-            <Shield className="h-3.5 w-3.5" />
-            <span>Admin Portal</span>
-          </Link>
-        </div>
-
         {/* Mobile menu button */}
         <div className="flex md:hidden items-center gap-2">
-          <Link
-            href="/admin"
-            className={buttonVariants({
-              variant: "ghost",
-              size: "icon",
-              className: "h-9 w-9",
-            })}
-            aria-label="Admin Portal"
-          >
-            <Shield className="h-4 w-4" />
-          </Link>
-
           <Button
             variant="ghost"
             size="icon"
@@ -97,20 +70,6 @@ export function StoreHeader() {
           >
             About Us
           </Link>
-          <div className="pt-2 border-t border-border">
-            <Link
-              href="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className={buttonVariants({
-                variant: "outline",
-                size: "sm",
-                className: "w-full justify-center gap-2",
-              })}
-            >
-              <Shield className="h-4 w-4" />
-              <span>Admin Dashboard</span>
-            </Link>
-          </div>
         </div>
       )}
     </header>

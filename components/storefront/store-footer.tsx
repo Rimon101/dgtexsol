@@ -1,6 +1,5 @@
 import * as React from "react";
 import Link from "next/link";
-import { Shield } from "lucide-react";
 
 export function StoreFooter() {
   const currentYear = new Date().getFullYear();
@@ -8,11 +7,11 @@ export function StoreFooter() {
   return (
     <footer id="about" className="border-t border-border bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {/* Brand */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {/* Brand & Socials */}
           <div className="space-y-3">
             <p className="font-bold text-foreground">Digital Exchange & Solution</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               Phone sales, exchanges, repairs & electrical solutions.
             </p>
 
@@ -44,7 +43,7 @@ export function StoreFooter() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-3 text-sm">
+          <div className="space-y-3 text-sm sm:text-right">
             <p className="font-semibold text-foreground">Quick Links</p>
             <ul className="space-y-2 text-muted-foreground">
               <li>
@@ -68,18 +67,6 @@ export function StoreFooter() {
                 </a>
               </li>
             </ul>
-          </div>
-
-          {/* Admin */}
-          <div className="space-y-3 text-sm">
-            <p className="font-semibold text-foreground">Management</p>
-            <Link
-              href="/admin"
-              className="inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              <Shield className="h-3.5 w-3.5" />
-              Admin Dashboard
-            </Link>
           </div>
         </div>
 
