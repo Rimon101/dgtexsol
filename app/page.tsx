@@ -30,7 +30,7 @@ export default async function HomePage() {
       <JsonLd products={products} />
       <StoreHeader />
       <main className="flex-1">
-        <Hero productCount={products.length} />
+        <Hero />
         <CustomClocksSection clocks={customClocks} />
         <ProductGrid initialProducts={products} categories={categories} />
       </main>

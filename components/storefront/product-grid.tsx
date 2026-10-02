@@ -76,24 +76,17 @@ export function ProductGrid({ initialProducts, categories }: ProductGridProps) {
     <section id="catalog" className="py-16 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <h2 className="text-3xl font-extrabold text-foreground tracking-tight">
-              Our Products
-            </h2>
-            <p className="text-sm text-muted-foreground mt-1">
-              Explore our full catalog of curated quality goods.
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h2 className="text-2xl font-bold text-foreground">Our Products</h2>
 
           {/* Search bar */}
-          <div className="relative w-full md:w-72">
+          <div className="relative w-full sm:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search products..."
-              className="pl-9 h-10 rounded-xl"
+              className="pl-9 h-9 rounded-lg"
             />
           </div>
         </div>
