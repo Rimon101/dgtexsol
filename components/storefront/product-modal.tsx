@@ -16,6 +16,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
   const [showBuyForm, setShowBuyForm] = React.useState(false);
   const [customerName, setCustomerName] = React.useState("");
   const [customerPhone, setCustomerPhone] = React.useState("");
+  const [customerAddress, setCustomerAddress] = React.useState("");
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   React.useEffect(() => {
@@ -38,6 +39,7 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
       setShowBuyForm(false);
       setCustomerName("");
       setCustomerPhone("");
+      setCustomerAddress("");
       setIsSubmitting(false);
     }
   }, [product]);
@@ -59,7 +61,8 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
       const result = await createOrderAction(
         product!.id,
         customerName,
-        customerPhone
+        customerPhone,
+        customerAddress
       );
 
       if (result.error) {
@@ -226,6 +229,22 @@ export function ProductModal({ product, onClose }: ProductModalProps) {
                           placeholder="01XXXXXXXXX"
                           disabled={isSubmitting}
                           className="w-full h-9 rounded-lg border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label htmlFor="modal-customer-address" className="text-xs font-medium text-foreground">
+                          Delivery Address
+                        </label>
+                        <textarea
+                          id="modal-customer-address"
+                          required
+                          minLength={5}
+                          rows={2}
+                          value={customerAddress}
+                          onChange={(e) => setCustomerAddress(e.target.value)}
+                          placeholder="House, Road, Area, City/District"
+                          disabled={isSubmitting}
+                          className="w-full rounded-lg border border-input bg-transparent p-2.5 text-sm shadow-xs focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 resize-none leading-snug"
                         />
                       </div>
                       <div className="flex gap-2">

@@ -15,6 +15,7 @@ export interface OrderRecord {
   currency: string;
   customer_name: string | null;
   customer_phone: string | null;
+  customer_address: string | null;
   status: "pending" | "completed" | "failed";
   trx_id: string | null;
   paid_at: string | null;
@@ -43,7 +44,8 @@ function generateOrderId(): string {
 export async function createOrderAction(
   productId: string,
   customerName: string,
-  customerPhone: string
+  customerPhone: string,
+  customerAddress: string
 ): Promise<CreateOrderResult> {
   // Validate inputs
   if (!customerName || customerName.trim().length < 2) {
@@ -51,6 +53,9 @@ export async function createOrderAction(
   }
   if (!customerPhone || customerPhone.trim().length < 6) {
     return { error: "Please enter a valid phone number." };
+  }
+  if (!customerAddress || customerAddress.trim().length < 5) {
+    return { error: "Please enter your full delivery address (at least 5 characters)." };
   }
 
   const publicKey = process.env.WAITMARK_PUBLIC_KEY;
@@ -91,6 +96,7 @@ export async function createOrderAction(
     currency: "BDT",
     customer_name: customerName.trim(),
     customer_phone: customerPhone.trim(),
+    customer_address: customerAddress.trim(),
     status: "pending",
   });
 

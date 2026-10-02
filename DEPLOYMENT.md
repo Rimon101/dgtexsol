@@ -27,6 +27,7 @@ Ensure the following migration scripts in the `supabase/migrations/` directory h
 2. `002_storage_setup.sql` — Creates the public `product-images` storage bucket and security policies.
 3. `003_orders_table.sql` — Creates `orders` table, indexes, and RLS policies for Waitmark Pay integration.
 4. `004_custom_clocks.sql` — Creates `custom_clocks` table and RLS policies for custom clock gallery showcase.
+5. `005_add_customer_address_to_orders.sql` — Adds `customer_address` column to `orders` table for delivery addresses.
 
 ### B. Auth URL Configuration
 1. In the Supabase Dashboard, navigate to **Authentication** > **URL Configuration**.

@@ -58,6 +58,12 @@ export default async function PaymentSuccessPage({
                 <span className="text-muted-foreground">Amount</span>
                 <span className="font-bold text-foreground">{formatPrice(order.amount)}</span>
               </div>
+              {order.customer_address && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Delivery To</span>
+                  <span className="text-xs font-medium text-foreground text-right max-w-[200px]">{order.customer_address}</span>
+                </div>
+              )}
               {order.trx_id && (
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Transaction ID</span>

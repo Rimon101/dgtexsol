@@ -80,6 +80,7 @@ Execute the SQL files in `supabase/migrations/` inside your Supabase SQL Editor:
 2. `supabase/migrations/002_storage_setup.sql` (Storage Bucket & Policies)
 3. `supabase/migrations/003_orders_table.sql` (Orders Table, Indexes, RLS)
 4. `supabase/migrations/004_custom_clocks.sql` (Custom Clocks Table, Indexes, RLS)
+5. `supabase/migrations/005_add_customer_address_to_orders.sql` (Customer Address column for delivery)
 
 ### 4. Create an Admin User
 In your Supabase Dashboard, go to **Authentication** > **Users** > **Add User** and create your admin account.

@@ -10,6 +10,7 @@ import {
   Package,
   Phone,
   User,
+  MapPin,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -105,14 +106,22 @@ export default async function AdminOrdersPage() {
                       <div className="space-y-0.5">
                         {order.customer_name && (
                           <div className="flex items-center gap-1 text-foreground">
-                            <User className="h-3 w-3 text-muted-foreground" />
-                            <span className="text-xs">{order.customer_name}</span>
+                            <User className="h-3 w-3 text-muted-foreground shrink-0" />
+                            <span className="text-xs font-medium">{order.customer_name}</span>
                           </div>
                         )}
                         {order.customer_phone && (
                           <div className="flex items-center gap-1 text-muted-foreground">
-                            <Phone className="h-3 w-3" />
+                            <Phone className="h-3 w-3 shrink-0" />
                             <span className="text-xs">{order.customer_phone}</span>
+                          </div>
+                        )}
+                        {order.customer_address && (
+                          <div className="flex items-start gap-1 text-muted-foreground pt-0.5">
+                            <MapPin className="h-3 w-3 shrink-0 mt-0.5" />
+                            <span className="text-xs max-w-[220px] line-clamp-2" title={order.customer_address}>
+                              {order.customer_address}
+                            </span>
                           </div>
                         )}
                       </div>

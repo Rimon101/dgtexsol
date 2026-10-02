@@ -98,6 +98,7 @@ export interface Database {
           currency: string;
           customer_name: string | null;
           customer_phone: string | null;
+          customer_address: string | null;
           status: string;
           trx_id: string | null;
           paid_at: string | null;
@@ -113,6 +114,7 @@ export interface Database {
           currency?: string;
           customer_name?: string | null;
           customer_phone?: string | null;
+          customer_address?: string | null;
           status?: string;
           trx_id?: string | null;
           paid_at?: string | null;
@@ -128,6 +130,7 @@ export interface Database {
           currency?: string;
           customer_name?: string | null;
           customer_phone?: string | null;
+          customer_address?: string | null;
           status?: string;
           trx_id?: string | null;
           paid_at?: string | null;
