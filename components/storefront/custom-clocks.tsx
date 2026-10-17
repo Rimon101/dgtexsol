@@ -28,6 +28,11 @@ export function CustomClocksSection({ clocks }: CustomClocksSectionProps) {
     };
   }, [selectedClock]);
 
+  const whatsappMessage = selectedClock?.title
+    ? `হাই, আমি এই ${selectedClock.title} ঘড়িটি অর্ডার করতে চাই।`
+    : "হাই, আমি একটি কাস্টম ঘড়ি অর্ডার করতে চাই।";
+  const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)}`;
+
   if (clocks.length === 0) return null;
 
   return (
@@ -106,7 +111,7 @@ export function CustomClocksSection({ clocks }: CustomClocksSectionProps) {
                 <p className="text-sm font-medium text-emerald-950 dark:text-emerald-200 leading-relaxed">
                   এই ঘড়িটি অর্ডার করতে এই হোয়াটসঅ্যাপ(
                   <a
-                    href={WHATSAPP_URL}
+                    href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-bold underline text-emerald-700 dark:text-emerald-400"
@@ -117,7 +122,7 @@ export function CustomClocksSection({ clocks }: CustomClocksSectionProps) {
                 </p>
 
                 <a
-                  href={WHATSAPP_URL}
+                  href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-colors"
